@@ -1,0 +1,9 @@
+{
+    "story": "(bio here) \u2014 placeholder for firm story: how Rulison Tax Consulting got started, what drives the practice, and why clients across Fresno County trust us with their taxes year after year.",
+    "mission": "(bio here) \u2014 placeholder for mission statement: our commitment to straightforward, honest tax guidance for individuals, families, and small businesses.",
+    "stats": [
+          {"value": "15+", "label": "Years in Business"},
+          {"value": "EA", "label": "Enrolled Agent"},
+          {"value": "CTEC", "label": "Licensed Preparer"}
+    ]
+}
