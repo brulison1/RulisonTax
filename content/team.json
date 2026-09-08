@@ -1,0 +1,16 @@
+{
+    "members": [
+          {
+                  "name": "(Name Here)",
+                  "title": "Enrolled Agent",
+                  "bio": "(bio here)",
+                  "credential": "EA License #: (placeholder)"
+          },
+          {
+                  "name": "(Name Here)",
+                  "title": "CTEC Registered Preparer",
+                  "bio": "(bio here)",
+                  "credential": "CTEC #: (placeholder)"
+          }
+    ]
+}
