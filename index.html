@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rulison Tax Consulting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{--black:#0c0c0c;--charcoal:#1b1b1b;--charcoal-2:#151515;--card:#212121;--grey:#8a8a8a;--grey-light:#cfcfcf;--gold:#cda349;--gold-soft:rgba(205,163,73,0.35);}
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{margin:0;background:var(--black);font-family:'Segoe UI', Arial, sans-serif;color:var(--grey-light);}
+    header.site-header{position:sticky;top:0;z-index:500;background:rgba(12,12,12,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--gold-soft);display:flex;align-items:center;justify-content:space-between;padding:16px 40px;}
+    .logo{font-size:20px;font-weight:700;letter-spacing:1.5px;color:var(--gold);text-transform:uppercase;white-space:nowrap;}
+    .logo span{color:var(--grey-light);font-weight:400;}
+    nav.main-nav{display:flex;align-items:center;gap:30px;}
+    nav.main-nav a{color:var(--grey-light);text-decoration:none;font-size:14px;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.2s ease;}
+    nav.main-nav a:hover{color:var(--gold);}
+    .nav-cta{border:1px solid var(--gold);color:var(--gold) !important;padding:9px 18px;border-radius:3px;font-weight:600;}
+    .nav-cta:hover{background:var(--gold);color:var(--charcoal-2) !important;}
+    .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+    .menu-toggle span{width:24px;height:2px;background:var(--gold);display:block;}
+    @media(max-width:860px){
+      nav.main-nav{position:fixed;top:64px;left:0;right:0;background:var(--charcoal);flex-direction:column;padding:20px;gap:18px;border-bottom:1px solid var(--gold-soft);display:none;}
+      nav.main-nav.open{display:flex;}
+      .menu-toggle{display:flex;}
+      .nav-cta{align-self:flex-start;}
+    }
+    section.hero{min-height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 20%, rgba(205,163,73,0.08), transparent 60%),var(--black);}
+    .eyebrow{color:var(--gold);letter-spacing:3px;font-size:13px;font-weight:600;text-transform:uppercase;margin-bottom:22px;}
+    h1.hero-title{font-size:52px;line-height:1.15;max-width:900px;margin:0 0 22px;color:#f2f2f2;font-weight:700;}
+    h1.hero-title em{color:var(--gold);font-style:normal;}
+    p.hero-sub{max-width:640px;font-size:18px;line-height:1.6;color:var(--grey-light);margin:0 0 34px;}
+    .badge-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:40px;}
+    .cred-badge{border:1px solid var(--gold-soft);color:var(--gold);padding:8px 18px;border-radius:30px;font-size:13px;letter-spacing:0.5px;text-transform:uppercase;font-weight:600;background:rgba(205,163,73,0.05);}
+    .cta-row{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-bottom:50px;}
+    .btn-primary, .btn-secondary{padding:15px 34px;border-radius:4px;font-size:15px;font-weight:700;text-decoration:none;letter-spacing:0.5px;text-transform:uppercase;transition:transform 0.15s ease, box-shadow 0.15s ease;display:inline-block;border:none;cursor:pointer;}
+    .btn-primary{background:var(--gold);color:var(--charcoal-2);box-shadow:0 0 0 rgba(205,163,73,0);}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(205,163,73,0.25);}
+    .btn-secondary{border:1px solid var(--grey);color:var(--grey-light);background:transparent;}
+    .btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+    .client-strip{font-si<style>
+                  section.timeline-section{background:var(--black);padding:0;}
+                  .timeline-outer{width:100%;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scrollbar-width:none;padding:180px 0;cursor:grab;position:relative;}
+                  .timeline-outer::-webkit-scrollbar{display:none;}
+                  .timeline-outer.dragging{cursor:grabbing;scroll-snap-type:none;}
+                  .timeline-track{display:flex;align-items:center;}
+                  .month-col{flex:0 0 224px;scroll-snap-align:center;cursor:pointer;transition:opacity 0.15s linear, transform 0.15s linear;display:flex;flex-direction:column;align-items:center;padding:0 10px;}
+                  .month-badge{padding:10px 22px;border-radius:30px;font-weight:700;letter-spacing:1px;font-size:14px;margin-bottom:18px;white-space:nowrap;background:var(--charcoal-2);color:var(--gold);border:1px solid var(--gold-soft);}
+                  .month-badge.current{background:var(--gold);color:var(--charcoal-2);box-shadow:0 0 24px rgba(205,163,73,0.6);border:none;}
+                  .event-card{background:var(--card);border-left:4px solid var(--gold);border-radius:4px;padding:12px 14px;margin-bottom:10px;width:100%;}
+                  .event-date{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:0.5px;margin-bottom:4px;text-transform:uppercase;}
+                  .event-desc{color:var(--grey-light);font-size:13px;line-height:1.4;}
+                  section.about-section{background:var(--charcoal-2);}
+                  .about-grid{display:flex;gap:60px;max-width:1100px;margin:0 auto;align-items:center;flex-wrap:wrap;}
+                  .about-photo{flex:1 1 320px;height:360px;background:var(--charcoal);border:1px solid var(--gold-soft);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:14px;text-align:center;padding:20px;}
+                  .about-text{flex:1 1 420px;color:var(--grey-light);line-height:1.7;font-size:16px;}
+                  .about-text h3{color:var(--gold);font-size:22px;margin-bottom:14px;}
+                  .about-stats{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap;}
+                  .about-stat b{display:block;font-size:28px;color:var(--gold);}
+                  .about-stat span{font-size:13px;color:var(--grey);text-transform:uppercase;letter-spacing:0.5px;}
+                  section.team-section{background:var(--black);}
+                  .team-grid{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;max-width:1100px;margin:0 auto;}
+                  .team-card{background:var(--card);border:1px solid var(--gold-soft);border-radius:6px;padding:28px;width:280px;text-align:center;}
+                  .team-photo{width:120px;height:120px;border-radius:50%;background:var(--charcoal);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:12px;border:1px solid var(--gold-soft);}
+                  .team-name{color:#f2f2f2;font-size:18px;font-weight:700;margin-bottom:4px;}
+                  .team-title{color:var(--gold);font-size:13px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px;}
+                  .team-bio{color:var(--grey-light);font-size:13px;line-height:1.6;font-style:italic;}
+                  .team-cred{color:var(--grey);font-size:12px;margin-top:10px;}
+                  footer.site-footer{padding:60px 40px;text-align:center;color:var(--grey);font-size:13px;border-top:1px solid var(--gold-soft);}
+                  section.services-section{background:var(--charcoal-2);}
+                  .services-grid{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1200px;margin:0 auto;}
+                  .service-card{background:var(--card);border:1px solid var(--gold-soft);border-radius:6px;padding:30px;width:320px;text-align:left;display:flex;flex-direction:column;}
+                  .service-num{color:var(--gold-soft);font-size:28px;font-weight:700;margin-bottom:10px;}
+                  .service-title{color:#f2f2f2;font-size:19px;font-weight:700;margin:0 0 12px;}
+                  .service-desc{color:var(--grey-light);font-size:14px;line-height:1.6;margin:0 0 20px;flex-grow:1;}
+                  .service-cta{color:var(--gold);font-size:13px;font-weight:700;text-decoration:none;letter-spacing:0.5px;text-transform:uppercase;}
+                  .service-cta:hover{text-decoration:underline;}
+                  section.contact-section{background:var(--black);}
+                  .contact-grid{display:flex;gap:60px;max-width:1100px;margin:0 auto;flex-wrap:wrap;}
+                  .contact-form{flex:1 1 400px;display:flex;flex-direction:column;gap:16px;}
+                  .contact-form input, .contact-form textarea{background:var(--charcoal);border:1px solid var(--gold-soft);border-radius:4px;padding:14px;color:var(--grey-light);font-size:14px;font-family:inherit;}
+                  .contact-form input:focus, .contact-form textarea:focus{outline:none;border-color:var(--gold);}
+                  .contact-form label{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--gold);margin-bottom:-8px;}
+                  .contact-form button{margin-top:6px;}
+                  .contact-info{flex:1 1 320px;display:flex;flex-direction:column;gap:24px;}
+                  .info-block h4{color:var(--gold);font-size:13px;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 8px;}
+                  .info-block p{margin:0;color:var(--grey-light);font-size:15px;line-height:1.6;}
+                  .info-block a{color:var(--grey-light);text-decoration:none;}
+                  .info-block a:hover{color:var(--gold);}
+                  .map-box{height:200px;background:var(--charcoal);border:1px solid var(--gold-soft);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:13px;}
+                  .form-note{font-size:12px;color:var(--grey);margin-top:-6px;}
+                  </style>
+  </head>
+  <body>
+    <div id="app">Loading&hellip;</div>
+    <script>
+      function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+      function fetchJSON(path){return fetch(path).then(function(r){return r.json();});}
+      Promise.all([
+        fetchJSON('content/hero.json'),
+        fetchJSON('content/about.json'),
+        fetchJSON('content/team.json'),
+        fetchJSON('content/services.json'),
+        fetchJSON('content/timeline.json'),
+        fetchJSON('content/contact.json')
+        ]).then(function(results){
+        var DATA = {hero:results[0], about:results[1], team:results[2], services:results[3], timeline:results[4], contact:results[5]};
+        render(DATA);
+      }).catch(function(err){
+        document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
+      });
+      function render(DATA){
+        var html = '';
+        html += headerHtml();
+        html += heroHtml(DATA.hero);
+        html += timelineHtml(DATA.timeline);
+        html += aboutHtml(DATA.about);
+        html += teamHtml(DATA.team);
+        html += servicesHtml(DATA.services);
+        html += contactHtml(DATA.contact);
+        html += footerHtml();
+        document.getElementById('app').innerHTML = html;
+        initInteractions(DATA);
+      }
+    </script>
+    <script>
+      function headerHtml(){
+        return '<header class="site-header"><div class="logo">RULISON <span>TAX CONSULTING</span></div><button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button><nav class="main-nav" id="mainNav"><a href="#home">Home</a><a href="#timeline">Deadlines</a><a href="#about">About</a><a href="#services">Services</a><a href="#team">Team</a><a href="#contact">Contact</a><a href="#contact" class="nav-cta">Schedule a Consultation</a></nav></header>';
+      }
+      function heroHtml(h){
+        var badges = (h.badges||[]).map(function(b){return '<div class="cred-badge">'+esc(b)+'</div>';}).join('');
+        var clients = (h.clientTypes||[]).map(function(c){return '<b>'+esc(c)+'</b>';}).join(' &middot; ');
+        return '<section class="hero" id="home">'
+        +'<div class="eyebrow">'+esc(h.eyebrow)+'</div>'
+        +'<h1 class="hero-title">Straightforward tax help for <em>families</em>, <em>small businesses</em> &amp; <em>rental property</em> owners</h1>'
+        +'<p class="hero-sub">'+esc(h.subtitle)+'</p>'
+        +'<div class="badge-row">'+badges+'</div>'
+        +'<div class="cta-row"><a href="#contact" class="btn-primary">Schedule a Consultation</a><a href="#services" class="btn-secondary">Explore Services</a></div>'
+        +'<div class="client-strip">'+clients+'</div>'
+        +'</section>';
+      }
+      function timelineHtml(t){
+        return '<section class="timeline-section" id="timeline">'
+        +'<div class="section-head" style="padding-top:80px;"><div class="section-eyebrow">Never Miss a Deadline</div><h2 class="section-title">Tax Deadline Timeline</h2><p class="section-sub">Drag or click through the year to see key dates for filing, planning, and compliance &mdash; it loops continuously.</p></div>'
+        +'<div class="timeline-outer" id="tOuter"><div class="timeline-track" id="tTrack"></div></div>'
+        +'</section>';
+      }
+      function aboutHtml(a){
+        var stats = (a.stats||[]).map(function(s){return '<div class="about-stat"><b>'+esc(s.value)+'</b><span>'+esc(s.label)+'</span></div>';}).join('');
+        return '<section class="about-section section-wrap" id="about">'
+        +'<div class="section-head"><div class="section-eyebrow">About Us</div><h2 class="section-title">Rulison Tax Consulting</h2></div>'
+        +'<div class="about-grid"><div class="about-photo">(firm / office photo here)</div>'
+        +'<div class="about-text"><h3>Our Story</h3><p>'+esc(a.story)+'</p><p>'+esc(a.mission)+'</p>'
+        +'<div class="about-stats">'+stats+'</div></div></div>'
+        +'</section>';
+      }
+    </script>
+    
+    </script>
+    <script>
+      function teamHtml(t){
+        var cards = (t.members||[]).map(function(m){
+          return '<div class="team-card"><div class="team-photo">(headshot here)</div><div class="team-name">'+esc(m.name)+'</div><div class="team-title">'+esc(m.title)+'</div><div class="team-bio">'+esc(m.bio)+'</div><div class="team-cred">'+esc(m.credential)+'</div></div>';
+        }).join('');
+        return '<section class="team-section section-wrap" id="team">'
+        +'<div class="section-head"><div class="section-eyebrow">Meet the Team</div><h2 class="section-title">Your Tax Professionals</h2></div>'
+        +'<div class="team-grid">'+cards+'</div>'
+        +'</section>';
+      }
+      function servicesHtml(s){
+        var cards = (s.items||[]).map(function(it, idx){
+          var num = (idx+1 < 10 ? '0' : '') + (idx+1);
+          return '<div class="service-card"><div class="service-num">'+num+'</div><h3 class="service-title">'+esc(it.title)+'</h3><p class="service-desc">'+esc(it.description)+'</p><a href="#contact" class="service-cta">'+esc(it.cta)+'</a></div>';
+        }).join('');
+        return '<section class="services-section section-wrap" id="services">'
+        +'<div class="section-head"><div class="section-eyebrow">What We Offer</div><h2 class="section-title">Services</h2><p class="section-sub">Plain-language tax help, tailored to individuals, businesses, and everything in between.</p></div>'
+        +'<div class="services-grid">'+cards+'</div>'
+        +'</section>';
+      }
+      function contactHtml(c){
+        return '<section class="contact-section section-wrap" id="contact">'
+        +'<div class="section-head"><div class="section-eyebrow">Get In Touch</div><h2 class="section-title">Ready to Get Started?</h2><p class="section-sub">Send a message or call/email us directly and we will be in touch shortly.</p></div>'
+        +'<div class="contact-grid">'
+        +'<form class="contact-form" id="mainContactForm" action="https://formspree.io/f/mljeopqw" method="POST">'
+        +'<label>Name</label><input type="text" name="name" placeholder="Your full name" required>'
+        +'<label>Email</label><input type="email" name="email" placeholder="you@example.com" required>'
+        +'<label>Phone</label><input type="tel" name="phone" placeholder="(559) 000-0000">'
+        +'<label>Message</label><textarea rows="5" name="message" placeholder="Tell us what you need help with..."></textarea>'
+        +'<input type="hidden" name="_subject" value="New website inquiry - Rulison Tax Consulting">'
+        +'<button type="submit" class="btn-primary">Send Message</button>'
+        +'<div class="form-note" id="formStatusNote"></div>'
+        +'</form>'
+        +'<div class="contact-info">'
+        +'<div class="info-block"><h4>Email</h4><p><a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a></p></div>'
+        +'<div class="info-block"><h4>Office Phone</h4><p><a href="tel:'+esc(c.phoneRaw)+'">'+esc(c.phone)+'</a></p></div>'
+        +'<div class="info-block"><h4>Office Address</h4><p>'+esc(c.address).replace(/\n/g,'<br>')+'</p></div>'
+        +'<div class="info-block"><h4>Office Hours</h4><p>'+esc(c.hours)+'</p></div>'
+        +'<div class="map-box">(map embed here &mdash; '+esc(c.address)+')</div>'
+        +'</div></div></section>';
+      }
+      function footerHtml(){
+        return '<footer class="site-footer">&copy; '+new Date().getFullYear()+' Rulison Tax Consulting. All rights reserved.</footer>';
+      }
+    </script>
+    
+    </script>
+    <script>
+      function initInteractions(DATA){
+        var mt = document.getElementById('menuToggle');
+        var mn = document.getElementById('mainNav');
+        if(mt){mt.addEventListener('click', function(){ mn.classList.toggle('open'); });}
+        buildTimeline(DATA.timeline);
+        var f = document.getElementById('mainContactForm');
+        var note = document.getElementById('formStatusNote');
+        if(f){
+          f.addEventListener('submit', function(e){
+            e.preventDefault();
+            note.textContent = 'Sending...';
+            fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}})
+            .then(function(res){
+              if(res.ok){ note.textContent = 'Thanks! Your message has been sent.'; f.reset(); }
+              else { note.textContent = 'Something went wrong. Please try again or call us directly.'; }
+            })
+            .catch(function(){ note.textContent = 'Something went wrong. Please try again or call us directly.'; });
+          });
+        }
+      }
+      function buildTimeline(t){
+        var track = document.getElementById('tTrack');
+        if(!track || !t || !t.months) return;
+        var monthIndex = new Date().getMonth();
+        var monthsHtml = '';
+        t.months.forEach(function(m, idx){
+          var isCurrent = idx === monthIndex;
+          var events = (m.events||[]).map(function(ev){
+            return '<div class="event-card"><div class="event-date">'+esc(ev.date)+'</div><div class="event-desc">'+esc(ev.desc)+'</div></div>';
+          }).join('');
+          monthsHtml += '<div class="month-col" data-index="'+idx+'"><div class="month-badge'+(isCurrent?' current':'')+'">'+esc(m.month)+'</div>'+events+'</div>';
+        });
+        track.innerHTML = monthsHtml;
+        var outer = document.getElementById('tOuter');
+        var cols = track.querySelectorAll('.month-col');
+        function scrollToIndex(i){
+          var col = cols[i];
+          if(col){ outer.scrollTo({left: col.offsetLeft - (outer.clientWidth/2) + (col.offsetWidth/2), behavior:'smooth'}); }
+        }
+        cols.forEach(function(col, i){
+          col.addEventListener('click', function(){ scrollToIndex(i); });
+        });
+        setTimeout(function(){ scrollToIndex(monthIndex); }, 50);
+        var isDown = false, startX, scrollLeft;
+        outer.addEventListener('mousedown', function(e){
+          isDown = true;
+          outer.classList.add('dragging');
+          startX = e.pageX - outer.offsetLeft;
+          scrollLeft = outer.scrollLeft;
+        });
+        outer.addEventListener('mouseleave', function(){ isDown = false; outer.classList.remove('dragging'); });
+        outer.addEventListener('mouseup', function(){ isDown = false; outer.classList.remove('dragging'); });
+        outer.addEventListener('mousemove', function(e){
+          if(!isDown) return;
+          e.preventDefault();
+          var x = e.pageX - outer.offsetLeft;
+          var walk = (x - startX) * 1.5;
+          outer.scrollLeft = scrollLeft - walk;
+        });
+      }
+    </script>
+  </body>
+</html>
+    </script>
