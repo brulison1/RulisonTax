@@ -1,0 +1,67 @@
+{
+    "months": [
+          {"month": "JANUARY", "events": [
+                  {"date": "Jan 15", "desc": "Q4 estimated tax payment due (prior year)"},
+                  {"date": "Jan 31", "desc": "W-2 / 1099 issuance deadline"},
+                  {"date": "Jan 31", "desc": "Q4 payroll tax return (Form 941) due"},
+                  {"date": "All Month", "desc": "Best time to form a new business entity"},
+                  {"date": "All Month", "desc": "Start gathering documents for filing season"}
+          ]},
+          {"month": "FEBRUARY", "events": [
+                  {"date": "Feb 28", "desc": "Paper-filing deadline for 1099 / 1096"},
+                  {"date": "All Month", "desc": "Mid-season tax planning check-in"},
+                  {"date": "All Month", "desc": "Respond to early IRS notices"}
+          ]},
+          {"month": "MARCH", "events": [
+                  {"date": "Mar 15", "desc": "S-Corp / Partnership returns (1120-S / 1065) or extension"},
+                  {"date": "Mar 15", "desc": "S-Corp election deadline (Form 2553)"},
+                  {"date": "All Month", "desc": "Multi-state filers confirm due dates"}
+          ]},
+          {"month": "APRIL", "events": [
+                  {"date": "Apr 15", "desc": "Individual returns (1040) or extension"},
+                  {"date": "Apr 15", "desc": "C-Corp returns (1120)"},
+                  {"date": "Apr 15", "desc": "Q1 estimated tax payment due"},
+                  {"date": "Apr 15", "desc": "Last day for prior-year IRA / HSA contributions"},
+                  {"date": "All Month", "desc": "FBAR due (automatic extension to Oct 15)"}
+          ]},
+          {"month": "MAY", "events": [
+                  {"date": "May 15", "desc": "Nonprofit returns (Form 990)"},
+                  {"date": "All Month", "desc": "Post-season review"}
+          ]},
+          {"month": "JUNE", "events": [
+                  {"date": "Jun 16", "desc": "Q2 estimated tax payment due"},
+                  {"date": "Jun 16", "desc": "Filing deadline for US citizens abroad"},
+                  {"date": "All Month", "desc": "Mid-year check-in for rental owners & investors"}
+          ]},
+          {"month": "JULY", "events": [
+                  {"date": "All Month", "desc": "IRS notice season (CP2000)"},
+                  {"date": "All Month", "desc": "Review multi-state nexus exposure"}
+          ]},
+          {"month": "AUGUST", "events": [
+                  {"date": "All Month", "desc": "Back-to-school business planning"},
+                  {"date": "All Month", "desc": "Begin gathering docs if extended"}
+          ]},
+          {"month": "SEPTEMBER", "events": [
+                  {"date": "Sep 15", "desc": "Q3 estimated tax payment due"},
+                  {"date": "Sep 15", "desc": "Extended S-Corp / Partnership returns due"},
+                  {"date": "All Month", "desc": "Year-end entity restructuring conversations begin"}
+          ]},
+          {"month": "OCTOBER", "events": [
+                  {"date": "Oct 15", "desc": "Extended individual returns due"},
+                  {"date": "Oct 15", "desc": "Extended C-Corp returns due"},
+                  {"date": "Oct 15", "desc": "Extended FBAR deadline"},
+                  {"date": "All Month", "desc": "Reconcile multi-state sales tax for Q3"}
+          ]},
+          {"month": "NOVEMBER", "events": [
+                  {"date": "All Month", "desc": "Year-end tax planning season begins"},
+                  {"date": "All Month", "desc": "Consider entity formation / election changes effective Jan 1"},
+                  {"date": "All Month", "desc": "Review retirement contributions (401k, SEP-IRA)"}
+          ]},
+          {"month": "DECEMBER", "events": [
+                  {"date": "Dec 31", "desc": "Last day for charitable / retirement contributions (401k)"},
+                  {"date": "Dec 31", "desc": "Last day for Section 179 equipment purchases"},
+                  {"date": "Dec 31", "desc": "Last day to establish a Solo 401(k)"},
+                  {"date": "All Month", "desc": "Finalize books and records"}
+          ]}
+    ]
+}
