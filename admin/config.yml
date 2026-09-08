@@ -1,0 +1,119 @@
+{
+"backend": {"name": "git-gateway", "branch": "main"},
+"media_folder": "images/uploads",
+"public_folder": "/images/uploads",
+"publish_mode": "simple",
+"collections": [
+{
+"name": "hero",
+"label": "Hero Section",
+"files": [
+{
+"file": "content/hero.json",
+"name": "hero",
+"label": "Hero",
+"fields": [
+{"label": "Eyebrow Text", "name": "eyebrow", "widget": "string"},
+{"label": "Subtitle", "name": "subtitle", "widget": "text"},
+{"label": "Badges", "name": "badges", "widget": "list"},
+{"label": "Client Types", "name": "clientTypes", "widget": "list"}
+]
+}
+]
+},
+{
+"name": "about",
+"label": "About Section",
+"files": [
+{
+"file": "content/about.json",
+"name": "about",
+"label": "About",
+"fields": [
+{"label": "Our Story", "name": "story", "widget": "text"},
+{"label": "Mission Statement", "name": "mission", "widget": "text"},
+{"label": "Stats", "name": "stats", "widget": "list", "fields": [
+{"label": "Value", "name": "value", "widget": "string"},
+{"label": "Label", "name": "label", "widget": "string"}
+]}
+]
+}
+]
+},
+{
+"name": "team",
+"label": "Team Section",
+"files": [
+{
+"file": "content/team.json",
+"name": "team",
+"label": "Team",
+"fields": [
+{"label": "Members", "name": "members", "widget": "list", "fields": [
+{"label": "Name", "name": "name", "widget": "string"},
+{"label": "Title", "name": "title", "widget": "string"},
+{"label": "Bio", "name": "bio", "widget": "text"},
+{"label": "Credential", "name": "credential", "widget": "string"}
+]}
+]
+}
+]
+},
+{
+"name": "services",
+"label": "Services Section",
+"files": [
+{
+"file": "content/services.json",
+"name": "services",
+"label": "Services",
+"fields": [
+{"label": "Services", "name": "items", "widget": "list", "fields": [
+{"label": "Title", "name": "title", "widget": "string"},
+{"label": "Description", "name": "description", "widget": "text"},
+{"label": "Call to Action Text", "name": "cta", "widget": "string"}
+]}
+]
+}
+]
+},
+{
+"name": "timeline",
+"label": "Deadline Timeline",
+"files": [
+{
+"file": "content/timeline.json",
+"name": "timeline",
+"label": "Timeline",
+"fields": [
+{"label": "Months", "name": "months", "widget": "list", "fields": [
+{"label": "Month Name", "name": "month", "widget": "string"},
+{"label": "Events", "name": "events", "widget": "list", "fields": [
+{"label": "Date", "name": "date", "widget": "string"},
+{"label": "Description", "name": "desc", "widget": "string"}
+]}
+]}
+]
+}
+]
+},
+{
+"name": "contact",
+"label": "Contact Info",
+"files": [
+{
+"file": "content/contact.json",
+"name": "contact",
+"label": "Contact",
+"fields": [
+{"label": "Email", "name": "email", "widget": "string"},
+{"label": "Phone (Display)", "name": "phone", "widget": "string"},
+{"label": "Phone (Digits Only)", "name": "phoneRaw", "widget": "string"},
+{"label": "Address", "name": "address", "widget": "text"},
+{"label": "Office Hours", "name": "hours", "widget": "string"}
+]
+}
+]
+}
+]
+}
