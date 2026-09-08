@@ -1,0 +1,11 @@
+{
+    "items": [
+          {"title": "Individual Tax Preparation & Filing", "description": "Accurate, on-time filing for W-2 employees, retirees, and families \u2014 claiming every credit and deduction you're entitled to.", "cta": "Schedule Your Filing Appointment \u2192"},
+          {"title": "Business Tax Preparation", "description": "Entity-specific returns for LLCs, S-Corps, partnerships, and corporations, prepared correctly the first time so your business stays compliant.", "cta": "Discuss Your Business Return \u2192"},
+          {"title": "Tax Planning & Strategy", "description": "Proactive, year-round guidance \u2014 not just during filing season \u2014 to reduce your tax burden before it's too late to act.", "cta": "Book a Planning Session \u2192"},
+          {"title": "IRS Audit Representation & Tax Resolution", "description": "If the IRS contacts you, we stand between you and the agency to resolve notices, audits, and back taxes.", "cta": "Get Help With a Notice \u2192"},
+          {"title": "Sales Tax & Multi-State Filing", "description": "For businesses operating across state lines or collecting sales tax, we keep you compliant everywhere you do business.", "cta": "Ask About Multi-State Filing \u2192"},
+          {"title": "Quarterly Estimated Tax Guidance", "description": "Freelancers, 1099 contractors, and business owners get clear quarterly payment amounts, so tax time never surprises you.", "cta": "Set Up Quarterly Guidance \u2192"},
+          {"title": "New Business Entity Formation & Tax Setup", "description": "Starting a business? We help you choose the right entity structure and get your tax setup right from day one.", "cta": "Start Your New Business Right \u2192"}
+    ]
+}
