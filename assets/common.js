@@ -3,7 +3,6 @@ function fetchJSON(path){return fetch(path).then(function(r){return r.json();});
 
 var NAV_LINKS = [
 {key:'home', href:'index.html', label:'Home'},
-{key:'timeline', href:'deadlines.html', label:'Deadlines'},
 {key:'about', href:'about.html', label:'About'},
 {key:'services', href:'services.html', label:'Services'},
 {key:'team', href:'team.html', label:'Team'},
