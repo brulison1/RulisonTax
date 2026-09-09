@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us - Rulison Tax Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="app">Loading&hellip;</div>
+<script src="assets/common.js"></script>
+<script>
+fetchJSON('content/about.json').then(function(a){
+render(a);
+}).catch(function(err){
+document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
+});
+
+function render(a){
+var stats = (a.stats||[]).map(function(s){return '<div class="about-stat"><b>'+esc(s.value)+'</b><span>'+esc(s.label)+'</span></div>';}).join('');
+var pageHero = '<div class="page-hero"><div class="section-eyebrow">About Us</div><h1 class="section-title">Rulison Tax Consulting</h1></div>';
+var body = '<section class="about-section section-wrap" id="about" style="padding-top:0;">'
++'<div class="about-grid"><div class="about-photo">(firm / office photo here)</div>'
++'<div class="about-text"><h3>Our Story</h3><p>'+esc(a.story)+'</p><p>'+esc(a.mission)+'</p>'
++'<div class="about-stats">'+stats+'</div></div></div>'
++'</section>';
+document.getElementById('app').innerHTML = headerHtml('about') + pageHero + body + footerHtml();
+initHeaderInteractions();
+}
+</script>
+</body>
+</html>
