@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tax Deadlines - Rulison Tax Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="app">Loading&hellip;</div>
+<script src="assets/common.js"></script>
+<script>
+fetchJSON('content/timeline.json').then(function(t){
+render(t);
+}).catch(function(err){
+document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
+});
+
+function render(t){
+var pageHero = '<div class="page-hero"><div class="section-eyebrow">Never Miss a Deadline</div><h1 class="section-title">Tax Deadline Timeline</h1><p class="section-sub">Drag or click through the year to see key dates for filing, planning, and compliance &mdash; it loops continuously.</p></div>';
+var body = '<section class="timeline-section" id="timeline"><div class="timeline-outer" id="tOuter"><div class="timeline-track" id="tTrack"></div></div></section>';
+document.getElementById('app').innerHTML = headerHtml('timeline') + pageHero + body + footerHtml();
+initHeaderInteractions();
+buildTimeline(t);
+}
+
+function buildTimeline(t){
+var track = document.getElementById('tTrack');
+if(!track || !t || !t.months) return;
+var monthIndex = new Date().getMonth();
+var monthsHtml = '';
+t.months.forEach(function(m, idx){
+var isCurrent = idx === monthIndex;
+var events = (m.events||[]).map(function(ev){
+return '<div class="event-card"><div class="event-date">'+esc(ev.date)+'</div><div class="event-desc">'+esc(ev.desc)+'</div></div>';
+}).join('');
+monthsHtml += '<div class="month-col" data-index="'+idx+'"><div class="month-badge'+(isCurrent?' current':'')+'">'+esc(m.month)+'</div>'+events+'</div>';
+});
+track.innerHTML = monthsHtml;
+var outer = document.getElementById('tOuter');
+var cols = track.querySelectorAll('.month-col');
+function scrollToIndex(i){
+var col = cols[i];
+if(col){ outer.scrollTo({left: col.offsetLeft - (outer.clientWidth/2) + (col.offsetWidth/2), behavior:'smooth'}); }
+}
+cols.forEach(function(col, i){
+col.addEventListener('click', function(){ scrollToIndex(i); });
+});
+setTimeout(function(){ scrollToIndex(monthIndex); }, 50);
+var isDown = false, startX, scrollLeft;
+outer.addEventListener('mousedown', function(e){
+isDown = true;
+outer.classList.add('dragging');
+startX = e.pageX - outer.offsetLeft;
+scrollLeft = outer.scrollLeft;
+});
+outer.addEventListener('mouseleave', function(){ isDown = false; outer.classList.remove('dragging'); });
+outer.addEventListener('mouseup', function(){ isDown = false; outer.classList.remove('dragging'); });
+outer.addEventListener('mousemove', function(e){
+if(!isDown) return;
+e.preventDefault();
+var x = e.pageX - outer.offsetLeft;
+var walk = (x - startX) * 1.5;
+outer.scrollLeft = scrollLeft - walk;
+});
+}
+</script>
+</body>
+</html>
