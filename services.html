@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services - Rulison Tax Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="app">Loading&hellip;</div>
+<script src="assets/common.js"></script>
+<script>
+fetchJSON('content/services.json').then(function(s){
+render(s);
+}).catch(function(err){
+document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
+});
+
+function render(s){
+var pageHero = '<div class="page-hero"><div class="section-eyebrow">What We Offer</div><h1 class="section-title">Services</h1><p class="section-sub">Plain-language tax help, tailored to individuals, businesses, and everything in between.</p></div>';
+var cards = (s.items||[]).map(function(it, idx){
+var num = (idx+1 < 10 ? '0' : '') + (idx+1);
+return '<div class="service-card"><div class="service-num">'+num+'</div><h3 class="service-title">'+esc(it.title)+'</h3><p class="service-desc">'+esc(it.description)+'</p><a href="contact.html" class="service-cta">'+esc(it.cta)+'</a></div>';
+}).join('');
+var body = '<section class="services-section section-wrap" style="padding-top:0;"><div class="services-grid">'+cards+'</div></section>';
+document.getElementById('app').innerHTML = headerHtml('services') + pageHero + body + footerHtml();
+initHeaderInteractions();
+}
+</script>
+</body>
+</html>
