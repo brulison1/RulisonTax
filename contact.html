@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact - Rulison Tax Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div id="app">Loading&hellip;</div>
+<script src="assets/common.js"></script>
+<script>
+fetchJSON('content/contact.json').then(function(c){
+render(c);
+}).catch(function(err){
+document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
+});
+
+function render(c){
+var pageHero = '<div class="page-hero"><div class="section-eyebrow">Get In Touch</div><h1 class="section-title">Ready to Get Started?</h1><p class="section-sub">Send a message or call/email us directly and we will be in touch shortly.</p></div>';
+var body = '<section class="contact-section section-wrap" id="contact" style="padding-top:0;">'
++'<div class="contact-grid">'
++'<form class="contact-form" id="mainContactForm" action="https://formspree.io/f/mljeopqw" method="POST">'
++'<label>Name</label><input type="text" name="name" placeholder="Your full name" required>'
++'<label>Email</label><input type="email" name="email" placeholder="you@example.com" required>'
++'<label>Phone</label><input type="tel" name="phone" placeholder="(559) 000-0000">'
++'<label>Message</label><textarea rows="5" name="message" placeholder="Tell us what you need help with..."></textarea>'
++'<input type="hidden" name="_subject" value="New website inquiry - Rulison Tax Consulting">'
++'<button type="submit" class="btn-primary">Send Message</button>'
++'<div class="form-note" id="formStatusNote"></div>'
++'</form>'
++'<div class="contact-info">'
++'<div class="info-block"><h4>Email</h4><p><a href="mailto:'+esc(c.email)+'">'+esc(c.email)+'</a></p></div>'
++'<div class="info-block"><h4>Office Phone</h4><p><a href="tel:'+esc(c.phoneRaw)+'">'+esc(c.phone)+'</a></p></div>'
++'<div class="info-block"><h4>Office Address</h4><p>'+esc(c.address).replace(/\n/g,'<br>')+'</p></div>'
++'<div class="info-block"><h4>Office Hours</h4><p>'+esc(c.hours)+'</p></div>'
++'<div class="map-box">(map embed here &mdash; '+esc(c.address)+')</div>'
++'</div></div></section>';
+document.getElementById('app').innerHTML = headerHtml('contact') + pageHero + body + footerHtml();
+initHeaderInteractions();
+initForm();
+}
+
+function initForm(){
+var f = document.getElementById('mainContactForm');
+var note = document.getElementById('formStatusNote');
+if(f){
+f.addEventListener('submit', function(e){
+e.preventDefault();
+note.textContent = 'Sending...';
+fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}})
+.then(function(res){
+if(res.ok){ note.textContent = 'Thanks! Your message has been sent.'; f.reset(); }
+else { note.textContent = 'Something went wrong. Please try again or call us directly.'; }
+})
+.catch(function(){ note.textContent = 'Something went wrong. Please try again or call us directly.'; });
+});
+}
+}
+</script>
+</body>
+</html>
