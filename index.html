@@ -10,13 +10,16 @@
 <div id="app">Loading&hellip;</div>
 <script src="assets/common.js"></script>
 <script>
-fetchJSON('content/hero.json').then(function(h){
-render(h);
+Promise.all([
+fetchJSON('content/hero.json'),
+fetchJSON('content/timeline.json')
+]).then(function(results){
+render(results[0], results[1]);
 }).catch(function(err){
 document.getElementById('app').textContent = 'Failed to load content: ' + err.message;
 });
 
-function render(h){
+function render(h, t){
 var badges = (h.badges||[]).map(function(b){return '<div class="cred-badge">'+esc(b)+'</div>';}).join('');
 var clients = (h.clientTypes||[]).map(function(c){return '<b>'+esc(c)+'</b>';}).join(' &middot; ');
 var hero = '<section class="hero" id="home">'
@@ -27,21 +30,67 @@ var hero = '<section class="hero" id="home">'
 +'<div class="cta-row"><a href="contact.html" class="btn-primary">Schedule a Consultation</a><a href="services.html" class="btn-secondary">Explore Services</a></div>'
 +'<div class="client-strip">'+clients+'</div>'
 +'</section>';
+
+var timelineHero = '<div class="page-hero"><div class="section-eyebrow">Never Miss a Deadline</div><h2 class="section-title">Tax Deadline Timeline</h2><p class="section-sub">Drag or click through the year to see key dates for filing, planning, and compliance &mdash; it loops continuously.</p></div>';
+var timelineBody = '<section class="timeline-section" id="timeline"><div class="timeline-outer" id="tOuter"><div class="timeline-track" id="tTrack"></div></div></section>';
+
 var quick = '<section class="section-wrap" id="quicklinks">'
 +'<div class="section-head"><div class="section-eyebrow">Find What You Need</div><h2 class="section-title">Explore</h2></div>'
 +'<div class="quick-links-grid">'
-+linkCard('deadlines.html','Tax Deadlines','Stay ahead of every filing date throughout the year.')
 +linkCard('about.html','About Us','Learn who we are and what drives our approach.')
 +linkCard('services.html','Services','See the full range of tax help we provide.')
 +linkCard('team.html','Our Team','Meet the professionals behind the work.')
 +linkCard('contact.html','Contact','Reach out to schedule a consultation.')
 +'</div></section>';
-document.getElementById('app').innerHTML = headerHtml('home') + hero + quick + footerHtml();
+
+document.getElementById('app').innerHTML = headerHtml('home') + hero + timelineHero + timelineBody + quick + footerHtml();
 initHeaderInteractions();
+buildTimeline(t);
 }
 
 function linkCard(href, title, desc){
 return '<a class="quick-link-card" href="'+href+'"><h3>'+title+'</h3><p>'+desc+'</p></a>';
+}
+
+function buildTimeline(t){
+var track = document.getElementById('tTrack');
+if(!track || !t || !t.months) return;
+var monthIndex = new Date().getMonth();
+var monthsHtml = '';
+t.months.forEach(function(m, idx){
+var isCurrent = idx === monthIndex;
+var events = (m.events||[]).map(function(ev){
+return '<div class="event-card"><div class="event-date">'+esc(ev.date)+'</div><div class="event-desc">'+esc(ev.desc)+'</div></div>';
+}).join('');
+monthsHtml += '<div class="month-col" data-index="'+idx+'"><div class="month-badge'+(isCurrent?' current':'')+'">'+esc(m.month)+'</div>'+events+'</div>';
+});
+track.innerHTML = monthsHtml;
+var outer = document.getElementById('tOuter');
+var cols = track.querySelectorAll('.month-col');
+function scrollToIndex(i){
+var col = cols[i];
+if(col){ outer.scrollTo({left: col.offsetLeft - (outer.clientWidth/2) + (col.offsetWidth/2), behavior:'smooth'}); }
+}
+cols.forEach(function(col, i){
+col.addEventListener('click', function(){ scrollToIndex(i); });
+});
+setTimeout(function(){ scrollToIndex(monthIndex); }, 50);
+var isDown = false, startX, scrollLeft;
+outer.addEventListener('mousedown', function(e){
+isDown = true;
+outer.classList.add('dragging');
+startX = e.pageX - outer.offsetLeft;
+scrollLeft = outer.scrollLeft;
+});
+outer.addEventListener('mouseleave', function(){ isDown = false; outer.classList.remove('dragging'); });
+outer.addEventListener('mouseup', function(){ isDown = false; outer.classList.remove('dragging'); });
+outer.addEventListener('mousemove', function(e){
+if(!isDown) return;
+e.preventDefault();
+var x = e.pageX - outer.offsetLeft;
+var walk = (x - startX) * 1.5;
+outer.scrollLeft = scrollLeft - walk;
+});
 }
 </script>
 </body>
