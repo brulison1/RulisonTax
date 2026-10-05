@@ -1,16 +1,1 @@
-{
-    "members": [
-          {
-                  "name": "(Name Here)",
-                  "title": "Enrolled Agent",
-                  "bio": "(bio here)",
-                  "credential": "EA License #: (placeholder)"
-          },
-          {
-                  "name": "(Name Here)",
-                  "title": "CTEC Registered Preparer",
-                  "bio": "(bio here)",
-                  "credential": "CTEC #: (placeholder)"
-          }
-    ]
-}
+{"members":[{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-headshot-1.jpg"},{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-headshot-2.jpg"},{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-desk-1.jpg"},{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-desk-2.jpg"},{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-desk-3.jpg"},{"name":"(Name Here)","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","photo":"assets/images/team-desk-4.jpg"}]}
