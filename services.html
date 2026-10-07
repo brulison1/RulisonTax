@@ -17,13 +17,13 @@ document.getElementById('app').textContent = 'Failed to load content: ' + err.me
 });
 
 function render(s){
-var pageHero = '<div class="page-hero"><div class="section-eyebrow">What We Offer</div><h1 class="section-title">Services</h1><p class="section-sub">Plain-language tax help, tailored to individuals, businesses, and everything in between.</p></div>';
+var pageHero = '<div class="page-hero"><h1 class="section-title">Services</h1><div class="section-eyebrow" style="margin:14px 0 0;">What We Offer</div></div>';
 var items = (s.items||[]).map(function(it, idx){
 var num = (idx+1 < 10 ? '0' : '') + (idx+1);
 var id = 'svc-panel-'+idx;
 return '<div class="svc-item"><button type="button" class="svc-head" aria-expanded="false" aria-controls="'+id+'"><span class="svc-num">'+num+'</span><span class="svc-title">'+esc(it.title)+'</span><span class="svc-chev" aria-hidden="true"></span></button><div class="svc-panel" id="'+id+'"><div class="svc-panel-inner"><p>'+esc(it.description)+'</p></div></div></div>';
 }).join('');
-var body = '<section class="svc-section"><p class="svc-hint">Select a service for a quick explanation</p><div class="svc-list">'+items+'</div><div class="svc-cta"><p>Ready to get started?</p><a href="contact.html" class="btn-primary">Schedule a Consultation</a></div></section>';
+var body = '<section class="svc-section"><div class="svc-list">'+items+'</div><div class="svc-cta"><p>Ready to get started?</p><a href="contact.html" class="btn-primary">Schedule a Consultation</a></div></section>';
 document.getElementById('app').innerHTML = headerHtml('services') + pageHero + body + footerHtml();
 initHeaderInteractions();
 initServices();
