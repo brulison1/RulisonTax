@@ -18,13 +18,48 @@ document.getElementById('app').textContent = 'Failed to load content: ' + err.me
 
 function render(s){
 var pageHero = '<div class="page-hero"><div class="section-eyebrow">What We Offer</div><h1 class="section-title">Services</h1><p class="section-sub">Plain-language tax help, tailored to individuals, businesses, and everything in between.</p></div>';
-var cards = (s.items||[]).map(function(it, idx){
+var items = (s.items||[]).map(function(it, idx){
 var num = (idx+1 < 10 ? '0' : '') + (idx+1);
-return '<div class="service-card"><div class="service-num">'+num+'</div><h3 class="service-title">'+esc(it.title)+'</h3><p class="service-desc">'+esc(it.description)+'</p><a href="contact.html" class="service-cta">'+esc(it.cta)+'</a></div>';
+var id = 'svc-panel-'+idx;
+return '<div class="svc-item"><button type="button" class="svc-head" aria-expanded="false" aria-controls="'+id+'"><span class="svc-num">'+num+'</span><span class="svc-title">'+esc(it.title)+'</span><span class="svc-chev" aria-hidden="true"></span></button><div class="svc-panel" id="'+id+'"><div class="svc-panel-inner"><p>'+esc(it.description)+'</p></div></div></div>';
 }).join('');
-var body = '<section class="services-section section-wrap" style="padding-top:0;"><div class="services-grid">'+cards+'</div></section>';
+var body = '<section class="svc-section"><p class="svc-hint">Select a service for a quick explanation</p><div class="svc-list">'+items+'</div><div class="svc-cta"><p>Ready to get started?</p><a href="contact.html" class="btn-primary">Schedule a Consultation</a></div></section>';
 document.getElementById('app').innerHTML = headerHtml('services') + pageHero + body + footerHtml();
 initHeaderInteractions();
+initServices();
+}
+
+function initServices(){
+var items = [].slice.call(document.querySelectorAll('.svc-item'));
+var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var ticking = false;
+function update(){
+ticking = false;
+var mid = window.innerHeight/2, range = window.innerHeight*0.5, best = null, bestD = Infinity;
+items.forEach(function(el){
+var r = el.querySelector('.svc-head').getBoundingClientRect();
+var d = Math.abs((r.top + r.height/2) - mid);
+var p = Math.max(0, 1 - d/range);
+p = p*p*(3 - 2*p);
+if(!reduce) el.style.setProperty('--p', p.toFixed(3));
+if(d < bestD){ bestD = d; best = el; }
+});
+items.forEach(function(el){ el.classList.toggle('is-focus', el === best); });
+}
+function queue(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+window.addEventListener('scroll', queue, {passive:true});
+window.addEventListener('resize', queue);
+items.forEach(function(el){
+var head = el.querySelector('.svc-head');
+head.addEventListener('click', function(){
+var open = !el.classList.contains('open');
+items.forEach(function(o){ o.classList.remove('open'); o.querySelector('.svc-head').setAttribute('aria-expanded','false'); });
+if(open){ el.classList.add('open'); head.setAttribute('aria-expanded','true'); }
+queue();
+});
+el.querySelector('.svc-panel').addEventListener('transitionend', queue);
+});
+update();
 }
 </script>
 </body>
