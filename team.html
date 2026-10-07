@@ -18,12 +18,23 @@ document.getElementById('app').textContent = 'Failed to load content: ' + err.me
 
 function attr(s){return esc(s).replace(/"/g,'&quot;');}
 
+function contactLine(label, value, scheme){
+var v = String(value==null?'':value).trim();
+if(!v) return '';
+var isPlaceholder = v.charAt(0)==='(';
+var href = scheme==='tel:' ? 'tel:'+v.replace(/[^0-9+]/g,'') : scheme+v;
+var shown = isPlaceholder ? esc(v) : '<a href="'+attr(href)+'">'+esc(v)+'</a>';
+return '<div><span class="team-contact-label">'+label+'</span>'+shown+'</div>';
+}
+
 function render(t){
 var pageHero = '<div class="page-hero"><div class="section-eyebrow">Meet the Team</div><h1 class="section-title">Your Tax Professionals</h1></div>';
-var cards = (t.members||[]).map(function(m){
-return '<div class="team-card"><div class="team-photo" style="overflow:hidden;">'+(m.photo?'<img src="'+attr(m.photo)+'" alt="'+attr(m.name)+'" style="width:100%;height:100%;object-fit:cover;">':'')+'</div><div class="team-name">'+esc(m.name)+'</div><div class="team-title">'+esc(m.title)+'</div><div class="team-bio">'+esc(m.bio)+'</div><div class="team-cred">'+esc(m.credential)+'</div></div>';
+var rows = (t.members||[]).map(function(m){
+var photo = m.photo ? '<img src="'+attr(m.photo)+'" alt="'+attr(m.name)+'">' : '<div class="team-photo-empty">(photo coming soon)</div>';
+var contact = contactLine('Email', m.email, 'mailto:') + contactLine('Phone', m.phone, 'tel:');
+return '<article class="team-row"><div class="team-row-photo">'+photo+'</div><div class="team-row-info"><div class="team-name">'+esc(m.name)+'</div><div class="team-title">'+esc(m.title)+'</div><div class="team-bio">'+esc(m.bio)+'</div><div class="team-cred">'+esc(m.credential)+'</div>'+(contact?'<div class="team-contact">'+contact+'</div>':'')+'</div></article>';
 }).join('');
-var body = '<section class="team-section section-wrap" style="padding-top:0;"><div class="team-grid">'+cards+'</div></section>';
+var body = '<section class="team-section section-wrap" style="padding-top:0;"><div class="team-list">'+rows+'</div></section>';
 document.getElementById('app').innerHTML = headerHtml('team') + pageHero + body + footerHtml();
 initHeaderInteractions();
 }
