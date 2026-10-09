@@ -1,1 +1,76 @@
-{"members":[{"name":"Steve Rulison","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":"assets/images/team-headshot-1.jpg"},{"name":"Ralph Castro","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":"assets/images/team-desk-4-wide.jpg"},{"name":"Eric Castro","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":"assets/images/team-headshot-2.jpg"},{"name":"Gloria Duarte","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":"assets/images/team-desk-1-wide.jpg"},{"name":"Lorena Lopez","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":"assets/images/team-desk-2-wide.jpg"},{"name":"Erika Rulison","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":""},{"name":"Blake Rulison","title":"(Title Here)","bio":"(Bio coming soon)","credential":"(Credential placeholder)","email":"(Email here)","phone":"(Phone here)","photo":""}]}
+{
+ "members": [
+  {
+   "name": "Steve Rulison, EA",
+   "title": "Owner | Enrolled Agent | Tax Consultant",
+   "bio": "As the owner of Rulison Tax Consulting, Steve Rulison brings over 15 years of experience in tax preparation, consulting, and business advisory services. As an Enrolled Agent (EA), Steve is federally authorized to represent taxpayers before the Internal Revenue Service.\n\nSteve specializes in strategic tax consulting, business entity formation, including S corporations, and business optimization. He works closely with individuals, entrepreneurs, and business owners to develop tax-efficient strategies, streamline operations, and support long-term financial success.\n\nKnown for his personalized approach, attention to detail, and commitment to building lasting client relationships, Steve takes pride in helping clients navigate complex tax matters with confidence. His goal is to provide more than just tax preparation—he strives to be a trusted advisor who helps clients make informed decisions and achieve their financial and business goals.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-headshot-1.jpg"
+  },
+  {
+   "name": "Ralph Castro",
+   "title": "",
+   "bio": "With over 50 years of experience in tax accounting, Ralph Castro has built a remarkable career founded on integrity, hard work, trust, and a genuine commitment to his clients. As a successful business owner, Ralph has dedicated his professional life to providing knowledgeable, personalized tax services while developing lasting relationships with the individuals and families he serves.\n\nWhat truly sets Ralph apart is the loyalty and trust he has earned throughout the decades. Many of his clients have remained with him for generations, a testament to his dedication, strong work ethic, and sincere care for their financial well-being.\n\nRalph takes great pride in treating his clients like family, always making their needs a priority and providing the personal attention they deserve. His reputation for honesty, reliability, and exceptional service has been the foundation of his success for more than half a century.\n\nToday, Ralph continues to serve his longtime clients with the same passion, dedication, and personal touch that have defined his career. His experience and lasting relationships are an invaluable part of the Rulison Tax Consulting and Castro Business Services strategic alliance.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-desk-4-wide.jpg"
+  },
+  {
+   "name": "Eric Castro",
+   "title": "Tax Preparer & Financial Consultant",
+   "bio": "Eric Castro brings an impressive background in finance, business, and management to Rulison Tax Consulting. He earned his MBA from USC with a concentration in Finance and his B.S. in Business Economics from UC Santa Barbara with a concentration in Accounting.\n\nA proud U.S. Air Force veteran, Eric recently retired after an accomplished 25-year career with HP, where he held leadership roles in finance, strategy, business planning, and management.\n\nKnown for his strong work ethic, sharp analytical skills, and ability to quickly master new challenges, Eric brings a wealth of experience and a fresh perspective to the tax profession. He will be working closely alongside Ralph Castro, combining his financial expertise with Ralph’s decades of tax experience to provide clients with the trusted, personalized service they have come to expect.\n\nEric’s dedication, professionalism, and commitment to excellence make him a valuable addition to our family business.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-headshot-2.jpg"
+  },
+  {
+   "name": "Gloria Duarte",
+   "title": "Tax Preparer | Over 40 Years of Dedicated Service",
+   "bio": "With over 40 years of dedicated service to our family business, Gloria Duarte has been an invaluable part of our team and its continued success. Her extensive knowledge, exceptional work ethic, and commitment to excellence have earned her the trust and loyalty of generations of clients.\n\nKnown for her professionalism, reliability, and genuine care for others, Gloria has built lasting relationships with clients who continue to rely on her year after year. Her dedication, experience, and personal approach truly reflect the values and traditions of our family business.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-desk-1-wide.jpg"
+  },
+  {
+   "name": "Leanna Jaurique",
+   "title": "Administrative Assistant | Over 5 Years of Dedicated Service",
+   "bio": "With over five years of dedicated service to our family business, Leanna Jaurique plays an important role in keeping our office running smoothly and ensuring our clients receive the attention and care they deserve.\n\nKnown for her strong work ethic, reliability, and team-oriented attitude, Leanna takes pride in providing exceptional client support. Her dedication, positive attitude, and willingness to go above and beyond make her a valued member of the Rulison Tax Consulting family.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-reception-wide.jpg"
+  },
+  {
+   "name": "Lorena Lopez",
+   "title": "Tax Preparer | Over 10 Years of Experience",
+   "bio": "With over 10 years of experience in tax preparation, Lorena Lopez brings extensive knowledge, professionalism, and dedication to Rulison Tax Consulting. Previously serving as both a manager and tax preparer at H&R Block, she has developed strong expertise in tax preparation, client service, and leadership.\n\nKnown for her intelligence, exceptional work ethic, and attention to detail, Lorena is committed to providing accurate, personalized service. Her dedication to her clients and genuine desire to help others make her a valued member of our team.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": "assets/images/team-desk-2-wide.jpg"
+  },
+  {
+   "name": "Erika Rulison",
+   "title": "Tax Preparer | Real Estate Broker",
+   "bio": "As the daughter of Ralph Castro and wife of Steve Rulison, Erika Rulison proudly carries on the family tradition of hard work, integrity, and dedication. In addition to serving as a tax preparer, Erika brings over 25 years of experience as a real estate broker, where she has built a reputation for professionalism, reliability, and exceptional client service.\n\nWith a strong commitment to her family’s business, Erika takes pride in building lasting relationships, supporting clients, and helping the firm continue to grow and succeed. Her dedication, strong work ethic, and genuine care for others reflect the values at the heart of Rulison Tax Consulting.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": ""
+  },
+  {
+   "name": "Blake Rulison",
+   "title": "Tax Preparer | Third-Generation Family Member",
+   "bio": "As the son of Steve and Erika Rulison and grandson of Ralph Castro, Blake Rulison proudly represents the third generation of our family business. He continues the family legacy of hard work, integrity, and dedication to serving our clients.\n\nKnown for his strong work ethic, reliability, and willingness to learn and grow, Blake is a valuable asset to our team. His commitment to providing quality service and upholding the values established by his family reflects the tradition of trust and personalized care that has defined our business for generations.",
+   "credential": "",
+   "email": "(Email here)",
+   "phone": "(Phone here)",
+   "photo": ""
+  }
+ ]
+}
