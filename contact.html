@@ -34,7 +34,7 @@ var body = '<section class="contact-section section-wrap" id="contact" style="pa
 +'<div class="info-block"><h4>Office Phone</h4><p><a href="tel:'+esc(c.phoneRaw)+'">'+esc(c.phone)+'</a></p></div>'
 +'<div class="info-block"><h4>Office Address</h4><p>'+esc(c.address).replace(/\n/g,'<br>')+'</p></div>'
 +'<div class="info-block"><h4>Office Hours</h4><p>'+esc(c.hours)+'</p></div>'
-+'<div class="map-box">(map embed here &mdash; '+esc(c.address)+')</div>'
++'<div class="map-box" style="height:280px;overflow:hidden;"><iframe title="Map to Rulison Tax Consulting" src="https://www.google.com/maps?q='+encodeURIComponent(String(c.address||'').replace(/\n/g,', '))+'&amp;output=embed" style="width:100%;height:100%;border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>'
 +'</div></div></section>';
 document.getElementById('app').innerHTML = headerHtml('contact') + pageHero + body + footerHtml();
 initHeaderInteractions();
