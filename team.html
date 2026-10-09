@@ -32,7 +32,10 @@ var pageHero = '<div class="page-hero"><div class="section-eyebrow">Meet the Tea
 var rows = (t.members||[]).map(function(m){
 var photo = m.photo ? '<img src="'+attr(m.photo)+'" alt="'+attr(m.name)+'">' : '<div class="team-photo-empty">(photo coming soon)</div>';
 var contact = contactLine('Email', m.email, 'mailto:') + contactLine('Phone', m.phone, 'tel:');
-return '<article class="team-row"><div class="team-row-photo">'+photo+'</div><div class="team-row-info"><div class="team-name">'+esc(m.name)+'</div><div class="team-title">'+esc(m.title)+'</div><div class="team-bio">'+esc(m.bio)+'</div><div class="team-cred">'+esc(m.credential)+'</div>'+(contact?'<div class="team-contact">'+contact+'</div>':'')+'</div></article>';
+var title = String(m.title||'').split('|').map(function(x){return x.trim();}).filter(Boolean).map(esc).join('<span class="team-title-sep">&middot;</span>');
+var bio = String(m.bio||'').split(/\n\s*\n/).map(function(x){return x.trim();}).filter(Boolean).map(function(x){return '<p>'+esc(x)+'</p>';}).join('');
+var cred = String(m.credential||'').trim();
+return '<article class="team-row"><div class="team-row-photo">'+photo+'</div><div class="team-row-info"><div class="team-name">'+esc(m.name)+'</div>'+(title?'<div class="team-title">'+title+'</div>':'')+(bio?'<div class="team-bio">'+bio+'</div>':'')+(cred?'<div class="team-cred">'+esc(cred)+'</div>':'')+(contact?'<div class="team-contact">'+contact+'</div>':'')+'</div></article>';
 }).join('');
 var body = '<section class="team-section section-wrap" style="padding-top:0;"><div class="team-list">'+rows+'</div></section>';
 document.getElementById('app').innerHTML = headerHtml('team') + pageHero + body + footerHtml();
