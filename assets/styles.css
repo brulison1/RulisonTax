@@ -26,6 +26,14 @@ section.hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-eve
 .eyebrow{color:var(--gold);letter-spacing:3px;font-size:13px;font-weight:600;text-transform:uppercase;margin-bottom:22px;}
 .hero-brand{font-family:'Oswald','Segoe UI',Arial,sans-serif;font-size:clamp(34px,6vw,76px);font-weight:600;letter-spacing:0.08em;line-height:1.1;text-transform:uppercase;color:var(--gold);margin:0 0 18px;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 .hero-brand span{color:#fff;-webkit-text-fill-color:#fff;font-weight:300;}
+.hero-brand.has-svg{background:none;-webkit-text-fill-color:initial;line-height:0;}
+.brand-svg{display:block;margin:0 auto;max-width:100%;height:auto;overflow:visible;}
+.brand-svg .brand-word{font-family:'Oswald','Segoe UI',Arial,sans-serif;font-size:100px;letter-spacing:8px;text-transform:uppercase;}
+.brand-svg .brand-r{font-weight:600;}
+.brand-svg .brand-t{font-weight:300;}
+.brand-svg .brand-trace{fill:none;stroke:#fff6d6;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40 360;animation:brandTrace 12s linear infinite;filter:drop-shadow(0 0 3px #ffdc73) drop-shadow(0 0 9px rgba(245,184,46,0.9));}
+@keyframes brandTrace{to{stroke-dashoffset:-400;}}
+@media(prefers-reduced-motion:reduce){.brand-svg .brand-trace{animation:none;stroke:none;filter:none;}}
 .hero-alliance{display:flex;align-items:center;justify-content:center;gap:18px;color:var(--gold);font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin:0 0 44px;}
 .hero-alliance::before,.hero-alliance::after{content:'';flex:0 0 48px;height:1px;background:var(--gold-soft);}
 h1.hero-title{font-size:clamp(21px,2.5vw,32px);line-height:1.3;max-width:760px;margin:0 0 14px;color:#ffffff;font-weight:600;text-wrap:balance;}
