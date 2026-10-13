@@ -63,7 +63,7 @@ section.timeline-section{background:var(--black);padding:0;}
 .event-desc{color:var(--grey-light);font-size:13px;line-height:1.4;}
 section.about-section{background:var(--charcoal-2);}
 .about-grid{display:flex;gap:60px;max-width:1100px;margin:0 auto;align-items:center;flex-wrap:wrap;}
-.about-photo{flex:1 1 320px;height:360px;background:var(--charcoal);border:1px solid var(--gold-soft);border-radius:6px;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:14px;text-align:center;padding:20px;}
+.about-photo{flex:1 1 320px;height:360px;background:var(--charcoal);border-radius:6px;border:3px solid var(--gold);box-shadow:0 12px 32px rgba(0,0,0,0.55),0 0 24px rgba(245,184,46,0.28);display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:14px;text-align:center;padding:20px;}
 .about-text{flex:1 1 420px;color:var(--grey-light);line-height:1.7;font-size:16px;}
 .about-text h3{color:var(--gold);font-size:22px;margin-bottom:14px;}
 .about-stats{display:flex;gap:40px;margin-top:30px;flex-wrap:wrap;}
@@ -134,8 +134,8 @@ section.contact-section{background:var(--black);}
 .team-list{display:flex;flex-direction:column;gap:36px;max-width:1000px;margin:0 auto;}
 .team-row{display:flex;gap:40px;align-items:flex-start;background:var(--card);border:1px solid var(--gold-soft);border-radius:6px;padding:28px;}
 .team-row-photo{flex:0 0 450px;display:flex;justify-content:center;}
-.team-row-photo img{display:block;height:300px;width:auto;max-width:100%;border-radius:4px;border:1px solid var(--gold-soft);}
-.team-photo-empty{width:300px;height:300px;border-radius:4px;background:var(--charcoal);border:1px solid var(--gold-soft);display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:13px;}
+.team-row-photo img{display:block;height:300px;width:auto;max-width:100%;border-radius:6px;border:3px solid var(--gold);box-shadow:0 12px 32px rgba(0,0,0,0.55),0 0 24px rgba(245,184,46,0.28);}
+.team-photo-empty{width:300px;height:300px;border-radius:6px;background:var(--charcoal);border:2px dashed var(--gold-soft);display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:13px;}
 .team-row-info{flex:1 1 0;min-width:0;}
 .team-row .team-name{font-size:24px;margin-bottom:6px;}
 .team-row .team-bio{font-size:15px;line-height:1.7;font-style:normal;color:var(--grey-light);}
