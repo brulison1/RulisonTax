@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Tinos:wght@400;700&display=swap');
 :root{--black:#0b0b0e;--charcoal:#2a2a32;--charcoal-2:#131317;--card:#1d1d24;--grey:#a4a4ae;--grey-light:#e6e6ec;--gold:#f5b82e;--gold-bright:#ffdc73;--gold-deep:#d98a10;--gold-soft:rgba(245,184,46,0.42);--gold-grad:linear-gradient(135deg,#ffdc73 0%,#f5b82e 50%,#d98a10 100%);}
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -24,13 +24,12 @@ section.hero{min-height:92vh;display:flex;flex-direction:column;align-items:cent
 section.hero::before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 50% 26%, rgba(245,184,46,0.16), transparent 55%);animation:glowPulse 9s ease-in-out infinite;}
 @keyframes glowPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:0.8;transform:scale(1.05);}}
 .eyebrow{color:var(--gold);letter-spacing:3px;font-size:13px;font-weight:600;text-transform:uppercase;margin-bottom:22px;}
-.hero-brand{font-family:'Oswald','Segoe UI',Arial,sans-serif;font-size:clamp(34px,6vw,76px);font-weight:600;letter-spacing:0.08em;line-height:1.1;text-transform:uppercase;color:var(--gold);margin:0 0 18px;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-brand{font-family:'Times New Roman',Tinos,Times,serif;font-size:clamp(34px,6vw,76px);font-weight:600;letter-spacing:0.08em;line-height:1.1;text-transform:uppercase;color:var(--gold);margin:0 0 18px;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 .hero-brand span{color:#fff;-webkit-text-fill-color:#fff;font-weight:300;}
 .hero-brand.has-svg{background:none;-webkit-text-fill-color:initial;line-height:0;}
 .brand-svg{display:block;margin:0 auto;max-width:100%;height:auto;overflow:visible;}
-.brand-svg .brand-word{font-family:'Oswald','Segoe UI',Arial,sans-serif;font-size:100px;letter-spacing:8px;text-transform:uppercase;}
-.brand-svg .brand-r{font-weight:600;}
-.brand-svg .brand-t{font-weight:300;}
+.brand-svg .brand-word{font-family:'Times New Roman',Tinos,Times,serif;font-weight:400;letter-spacing:6px;}
+.brand-svg .brand-fill{stroke-width:2.5;stroke-linejoin:round;paint-order:stroke fill;}
 .brand-svg .brand-trace{fill:none;stroke:#fff6d6;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40 360;animation:brandTrace 12s linear infinite;filter:drop-shadow(0 0 3px #ffdc73) drop-shadow(0 0 9px rgba(245,184,46,0.9));}
 @keyframes brandTrace{to{stroke-dashoffset:-400;}}
 @media(prefers-reduced-motion:reduce){.brand-svg .brand-trace{animation:none;stroke:none;filter:none;}}
