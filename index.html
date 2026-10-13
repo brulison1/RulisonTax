@@ -51,40 +51,57 @@ buildTimeline(t);
 function initBrandTrace(){
 var el = document.getElementById('heroBrand');
 if(!el || !window.SVGElement || !document.createElement('canvas').getContext) return;
-var NS = 'http://www.w3.org/2000/svg', FAMILY = "Oswald, 'Segoe UI', Arial, sans-serif", LS = 8, PAD = 12;
+var NS = 'http://www.w3.org/2000/svg', FAMILY = "'Times New Roman', Tinos, Times, serif";
+var LS = 6, PAD = 12, S = 100, BIG = 122, WEIGHT = 400;
 var mq = window.matchMedia('(max-width:860px)');
+var WORD1 = [['R', BIG], ['ULISON', S]];
+var WORD2 = [['T', BIG], ['AX ', S], ['C', BIG], ['ONSULTING', S]];
 function build(){
 var c = document.createElement('canvas').getContext('2d');
-c.font = '600 100px ' + FAMILY; var mR = c.measureText('RULISON');
-c.font = '300 100px ' + FAMILY; var mT = c.measureText('TAX CONSULTING');
-var asc = Math.max(mR.actualBoundingBoxAscent || 82, mT.actualBoundingBoxAscent || 82);
-var desc = Math.max(mR.actualBoundingBoxDescent || 1, mT.actualBoundingBoxDescent || 1);
-var wR = mR.width + LS*6, wT = mT.width + LS*13, gap = 38, lineGap = 24;
-var two = mq.matches, W, H, rx, ry, tx, ty;
-if(!two){ W = wR + gap + wT; H = asc + desc; rx = 0; tx = wR + gap; ry = ty = asc; }
-else { W = Math.max(wR, wT); H = 2*(asc + desc) + lineGap; rx = (W - wR)/2; tx = (W - wT)/2; ry = asc; ty = 2*asc + desc + lineGap; }
+function measure(parts){
+var w = 0, asc = 0, desc = 0, chars = 0;
+parts.forEach(function(p){
+c.font = WEIGHT + ' ' + p[1] + 'px ' + FAMILY;
+var m = c.measureText(p[0]);
+w += m.width; chars += p[0].length;
+asc = Math.max(asc, m.actualBoundingBoxAscent || p[1]*0.66);
+desc = Math.max(desc, m.actualBoundingBoxDescent || 2);
+});
+return { w: w + LS*(chars - 1), asc: asc, desc: desc };
+}
+var m1 = measure(WORD1), m2 = measure(WORD2);
+var asc = Math.max(m1.asc, m2.asc), desc = Math.max(m1.desc, m2.desc);
+var two = mq.matches, gap = 40, lineGap = 22, W, H, x1, y1, x2, y2;
+if(!two){ W = m1.w + gap + m2.w; H = asc + desc; x1 = 0; x2 = m1.w + gap; y1 = y2 = asc; }
+else { W = Math.max(m1.w, m2.w); H = 2*(asc + desc) + lineGap; x1 = (W - m1.w)/2; x2 = (W - m2.w)/2; y1 = asc; y2 = 2*asc + desc + lineGap; }
 var svg = document.createElementNS(NS, 'svg');
 svg.setAttribute('class', 'brand-svg');
 svg.setAttribute('role', 'img');
 svg.setAttribute('aria-label', 'Rulison Tax Consulting');
 svg.setAttribute('viewBox', (-PAD) + ' ' + (-PAD) + ' ' + (W + 2*PAD) + ' ' + (H + 2*PAD));
 svg.style.width = ((W + 2*PAD)/100) + 'em';
-svg.innerHTML = '<defs><linearGradient id="brandGrad" gradientUnits="userSpaceOnUse" x1="' + rx + '" y1="0" x2="' + (rx + wR) + '" y2="' + ry + '"><stop offset="0" stop-color="#ffdc73"/><stop offset="0.5" stop-color="#f5b82e"/><stop offset="1" stop-color="#d98a10"/></linearGradient></defs>';
-function word(cls, str, x, y, fill){
+svg.innerHTML = '<defs><linearGradient id="brandGrad" gradientUnits="userSpaceOnUse" x1="' + x1 + '" y1="' + (y1 - asc) + '" x2="' + (x1 + m1.w) + '" y2="' + y1 + '"><stop offset="0" stop-color="#ffdc73"/><stop offset="0.5" stop-color="#f5b82e"/><stop offset="1" stop-color="#d98a10"/></linearGradient></defs>';
+function word(cls, parts, x, y, paint){
 var n = document.createElementNS(NS, 'text');
 n.setAttribute('class', cls); n.setAttribute('x', x); n.setAttribute('y', y);
-if(fill) n.setAttribute('fill', fill);
-n.textContent = str; svg.appendChild(n);
+if(paint){ n.setAttribute('fill', paint); n.setAttribute('stroke', paint); }
+parts.forEach(function(p){
+var t = document.createElementNS(NS, 'tspan');
+t.setAttribute('font-size', p[1]);
+t.textContent = p[0];
+n.appendChild(t);
+});
+svg.appendChild(n);
 }
-word('brand-word brand-r brand-trace', 'Rulison', rx, ry);
-word('brand-word brand-t brand-trace', 'Tax Consulting', tx, ty);
-word('brand-word brand-r', 'Rulison', rx, ry, 'url(#brandGrad)');
-word('brand-word brand-t', 'Tax Consulting', tx, ty, '#ffffff');
+word('brand-word brand-trace', WORD1, x1, y1);
+word('brand-word brand-trace', WORD2, x2, y2);
+word('brand-word brand-fill', WORD1, x1, y1, 'url(#brandGrad)');
+word('brand-word brand-fill', WORD2, x2, y2, '#ffffff');
 el.textContent = '';
 el.classList.add('has-svg');
 el.appendChild(svg);
 }
-var ready = (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load('600 100px Oswald'), document.fonts.load('300 100px Oswald')]).catch(function(){}) : Promise.resolve();
+var ready = (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load(WEIGHT + ' 100px Tinos'), document.fonts.ready]).catch(function(){}) : Promise.resolve();
 ready.then(function(){
 try { build(); } catch(e){}
 var onChange = function(){ try { build(); } catch(e){} };
