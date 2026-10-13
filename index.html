@@ -22,7 +22,7 @@ document.getElementById('app').textContent = 'Failed to load content: ' + err.me
 function render(h, t){
 var badges = (h.badges||[]).map(function(b){return '<div class="cred-badge">'+esc(b)+'</div>';}).join('');
 var hero = '<section class="hero" id="home">'
-+'<div class="hero-brand">Rulison <span>Tax Consulting</span></div>'
++'<div class="hero-brand" id="heroBrand">Rulison <span>Tax Consulting</span></div>'
 +'<div class="hero-alliance">A Castro Business Services Strategic Alliance</div>'
 +'<h1 class="hero-title">Straightforward tax help for <em>families</em>, <em>small businesses</em> &amp; <em>rental property</em> owners</h1>'
   +'<p class="hero-joke">We read the fine print so you don&rsquo;t have to.</p>'
@@ -44,7 +44,52 @@ var quick = '<section class="section-wrap quick-section" id="quicklinks">'
 
 document.getElementById('app').innerHTML = headerHtml('home') + hero + timelineHero + timelineBody + quick + footerHtml();
 initHeaderInteractions();
+initBrandTrace();
 buildTimeline(t);
+}
+
+function initBrandTrace(){
+var el = document.getElementById('heroBrand');
+if(!el || !window.SVGElement || !document.createElement('canvas').getContext) return;
+var NS = 'http://www.w3.org/2000/svg', FAMILY = "Oswald, 'Segoe UI', Arial, sans-serif", LS = 8, PAD = 12;
+var mq = window.matchMedia('(max-width:860px)');
+function build(){
+var c = document.createElement('canvas').getContext('2d');
+c.font = '600 100px ' + FAMILY; var mR = c.measureText('RULISON');
+c.font = '300 100px ' + FAMILY; var mT = c.measureText('TAX CONSULTING');
+var asc = Math.max(mR.actualBoundingBoxAscent || 82, mT.actualBoundingBoxAscent || 82);
+var desc = Math.max(mR.actualBoundingBoxDescent || 1, mT.actualBoundingBoxDescent || 1);
+var wR = mR.width + LS*6, wT = mT.width + LS*13, gap = 38, lineGap = 24;
+var two = mq.matches, W, H, rx, ry, tx, ty;
+if(!two){ W = wR + gap + wT; H = asc + desc; rx = 0; tx = wR + gap; ry = ty = asc; }
+else { W = Math.max(wR, wT); H = 2*(asc + desc) + lineGap; rx = (W - wR)/2; tx = (W - wT)/2; ry = asc; ty = 2*asc + desc + lineGap; }
+var svg = document.createElementNS(NS, 'svg');
+svg.setAttribute('class', 'brand-svg');
+svg.setAttribute('role', 'img');
+svg.setAttribute('aria-label', 'Rulison Tax Consulting');
+svg.setAttribute('viewBox', (-PAD) + ' ' + (-PAD) + ' ' + (W + 2*PAD) + ' ' + (H + 2*PAD));
+svg.style.width = ((W + 2*PAD)/100) + 'em';
+svg.innerHTML = '<defs><linearGradient id="brandGrad" gradientUnits="userSpaceOnUse" x1="' + rx + '" y1="0" x2="' + (rx + wR) + '" y2="' + ry + '"><stop offset="0" stop-color="#ffdc73"/><stop offset="0.5" stop-color="#f5b82e"/><stop offset="1" stop-color="#d98a10"/></linearGradient></defs>';
+function word(cls, str, x, y, fill){
+var n = document.createElementNS(NS, 'text');
+n.setAttribute('class', cls); n.setAttribute('x', x); n.setAttribute('y', y);
+if(fill) n.setAttribute('fill', fill);
+n.textContent = str; svg.appendChild(n);
+}
+word('brand-word brand-r brand-trace', 'Rulison', rx, ry);
+word('brand-word brand-t brand-trace', 'Tax Consulting', tx, ty);
+word('brand-word brand-r', 'Rulison', rx, ry, 'url(#brandGrad)');
+word('brand-word brand-t', 'Tax Consulting', tx, ty, '#ffffff');
+el.textContent = '';
+el.classList.add('has-svg');
+el.appendChild(svg);
+}
+var ready = (document.fonts && document.fonts.load) ? Promise.all([document.fonts.load('600 100px Oswald'), document.fonts.load('300 100px Oswald')]).catch(function(){}) : Promise.resolve();
+ready.then(function(){
+try { build(); } catch(e){}
+var onChange = function(){ try { build(); } catch(e){} };
+if(mq.addEventListener) mq.addEventListener('change', onChange); else if(mq.addListener) mq.addListener(onChange);
+});
 }
 
 function linkCard(href, title, desc){
