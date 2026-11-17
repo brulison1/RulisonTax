@@ -61,7 +61,7 @@
    "credential": "",
    "email": "",
    "phone": "",
-   "photo": ""
+   "photo": "assets/images/Real_Estate_Headshot.jpeg"
   },
   {
    "name": "Blake Rulison",
@@ -70,7 +70,7 @@
    "credential": "",
    "email": "",
    "phone": "",
-   "photo": ""
+   "photo": "assets/images/professional_headshot.jpeg"
   }
  ]
 }
